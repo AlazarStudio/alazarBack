@@ -39,44 +39,5 @@ model Developer {
   behance    String?
   pinterest  String?
   artstation String?
-
-  caseHomes CaseHome[] @relation("CaseHomeDevelopers")
-
 }
 
-model Category {
-  id        Int       @id @default(autoincrement())
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime  @updatedAt @map("updated_at")
-  title     String
-
-  caseHomes CaseHome[] @relation("CaseHomeCategories")
-}
-
-model CaseHome {
-  id         Int        @id @default(autoincrement())
-  createdAt  DateTime   @default(now()) @map("created_at")
-  updatedAt  DateTime   @updatedAt @map("updated_at")
-  name       String
-  img        String[]   // массив путей к изображениям
-  price      Int?
-  website    String?
-  date       DateTime?
-
-  developers Developer[] @relation("CaseHomeDevelopers")
-  categories Category[]  @relation("CaseHomeCategories")
-}
-
-
-model Discussion {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  name     String
-  phone    String
-  email    String
-  company  String?
-  budget   String?
-  message  String
-}

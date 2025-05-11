@@ -39,9 +39,6 @@ model Developer {
   behance    String?
   pinterest  String?
   artstation String?
-
-  caseHomes CaseHome[] @relation("CaseHomeDevelopers")
-
 }
 
 model Category {
@@ -51,6 +48,7 @@ model Category {
   title     String
 
   caseHomes CaseHome[] @relation("CaseHomeCategories")
+  cases     Case[]     @relation("CaseCategories")
 }
 
 model CaseHome {
@@ -65,18 +63,4 @@ model CaseHome {
 
   developers Developer[] @relation("CaseHomeDevelopers")
   categories Category[]  @relation("CaseHomeCategories")
-}
-
-
-model Discussion {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  name     String
-  phone    String
-  email    String
-  company  String?
-  budget   String?
-  message  String
 }

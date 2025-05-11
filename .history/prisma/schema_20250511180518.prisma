@@ -51,6 +51,7 @@ model Category {
   title     String
 
   caseHomes CaseHome[] @relation("CaseHomeCategories")
+  cases     Case[]     @relation("CaseCategories")
 }
 
 model CaseHome {
